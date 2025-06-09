@@ -1,5 +1,6 @@
 import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { AuthService } from '../../service/auth.servcice';
 
 
 @Component({
@@ -7,14 +8,16 @@ import { Component } from '@angular/core';
   standalone: false,
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  providers: [AuthService]
 })
 export class LoginComponent {
+
+  constructor(private authService: AuthService) { }
+
   username: string = ''; // Add this line
   password: string = ''; // Add this line
 
   login() {
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
-    localStorage.setItem('token', 'DESARROLLOWEB')
+    this.authService.login(this.username, this.password);
   }
 }
