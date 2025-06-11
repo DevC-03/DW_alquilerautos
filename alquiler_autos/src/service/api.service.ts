@@ -7,7 +7,7 @@ import { Usuario } from '../model/usuario.model';
   providedIn: 'root',
 })
 export class ApiService {
-  private ApiUrl = 'http://localhost:8000/api/usuarios/'; // URL base de tu API
+  private ApiUrl = 'http://localhost:8000/api/'; // URL base de tu API
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -18,7 +18,30 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   // Obtener la lista de usuarios
-  getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.ApiUrl);
+
+  getEmpleados(): Observable<Usuario[]> {
+      return this.http.get<Usuario[]>(this.ApiUrl);
   }
+
+  //GET Jugadores
+  public getUsuario(): Observable<Usuario[]> {
+        return this.http.get<Usuario[]>(this.ApiUrl + 'usuarios');
+  }
+  
+  //DELETE Jugador
+  public deleteUsuario(id:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'usuarios/' + id + "/");
+  }
+
+  //PUT Jugador
+  public putUsuario(usuario:Usuario): Observable<Usuario>{
+        let body = JSON.stringify(usuario);
+        return this.http.put<Usuario>(this.ApiUrl + 'usuarios/' + usuario.id + "/",body,this.httpOptions);
+  }
+
+  //POST Jugador
+    public postJugador(usuario:Usuario): Observable<Usuario>{
+        let body = JSON.stringify(usuario);
+        return this.http.post<Usuario>(this.ApiUrl + 'usuarios/',body,this.httpOptions);
+    }
 }

@@ -16,7 +16,7 @@ export class ListausuariosComponent {
   lista: Usuario[];
 
   ngOnInit() {
-    this.api.getUsuarios().subscribe(res => {
+    this.api.getEmpleados().subscribe(res => {
       this.lista = res;
       console.log(this.lista);
     });

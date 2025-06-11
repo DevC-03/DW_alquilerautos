@@ -1,6 +1,7 @@
 import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { AuthService } from '../../service/auth.servcice';
+import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,13 +12,21 @@ import { AuthService } from '../../service/auth.servcice';
   providers: [AuthService]
 })
 export class LoginComponent {
+  username = '';
+  password = '';
+  error = '';
 
-  constructor(private authService: AuthService) { }
-
-  username: string = ''; // Add this line
-  password: string = ''; // Add this line
+  constructor(private auth: AuthService, private router: Router) {}
 
   login() {
-    this.authService.login(this.username, this.password);
+    this.auth.login(this.username, this.password).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['/listausuarios']);
+      },
+      error: () => {
+        this.error = 'Credenciales incorrectas';
+      }
+    });
   }
 }
