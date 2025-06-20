@@ -1,16 +1,115 @@
-.login-bg {
-  background: linear-gradient(135deg, #021ff9, #fe0202);
-  background-size: cover;
-  background-position: center;
-  padding: 1rem;
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@media (max-width: 576px) {
-  p-card {
-    padding: 0 !important;
-  }
+.container {
+  width: 100%;
+  max-width: 400px;
+}
 
-  .p-card .p-card-body {
-    padding: 1.5rem !important;
-  }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h2 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+select, input[type="tel"] {
+  width: 95%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+select, input[type="password"] {
+  width: 95%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.info {
+  font-size: 12px;
+  color: #666;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.info a {
+  color: #ff385c;
+  text-decoration: none;
+}
+
+.btn-main {
+  background-color: #ff385c;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider span {
+  background: white;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #ddd;
+  z-index: 0;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: white;
 }
