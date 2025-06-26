@@ -12,13 +12,19 @@ import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeng/themes/lara';
 
 import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+
 
 import { MenubarModule } from 'primeng/menubar';
 import { LoginComponent } from './login/login.component';
 
 import { CardModule } from 'primeng/card';
 import { MessageModule } from 'primeng/message';
-import { ButtonModule } from 'primeng/button';
+
 
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../service/token.interceptor';
@@ -39,6 +45,10 @@ import { TokenInterceptor } from '../service/token.interceptor';
     MessageModule,
     ButtonModule,
     FormsModule,
+    InputTextModule,
+    SelectModule,
+    ConfirmDialogModule,
+    DialogModule,
     HttpClientModule
   ],
   providers: [

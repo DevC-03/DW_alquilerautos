@@ -1,18 +1,81 @@
-<p-table [value]="lista" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
+<h1>Tipo de Usuarios</h1>
+<!-- READ ==> TABLA -->
+<p-button label="Nuevo" icon="pi pi-plus" class="mr-2" (onClick)="abrirDialogo()" />
+<p-table [value]="listausuarios" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template #header>
         <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Es proveedor</th>
+            <th style="width:20%">ID</th>
+            <th style="width:20%">Username</th>
+            <th style="width:20%">Email</th>
+            <th style="width:20%">Es Proveedor</th>
+            <th style="width:20%"></th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-usuario>
+    <ng-template #body let-usuario let-ri="rowIndex">
         <tr>
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.username }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>{{ usuario.es_proveedor ? 'Sí' : 'No' }}</td>
+            <td>
+                {{usuario.id}}
+            </td>            
+            <td>
+                {{usuario.username}}
+            </td>
+            <td>
+                {{usuario.email}}
+            </td>
+            <td>
+                {{usuario.es_proveedor ? 'Sí' : 'No'}}
+            </td>
+            <!-- DELETE ==> BOTON -->
+            <td>
+                <div class="flex items-center justify-center gap-2">
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-pencil"
+                        (click)="editarTipo(usuario)"
+                        text
+                        rounded
+                        severity="secondary"
+                    ></button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-times"
+                        (click)="eliminarTipo(usuario)"
+                        text
+                        rounded
+                        severity="secondary"
+                    ></button>
+                </div>
+            </td>
         </tr>
     </ng-template>
 </p-table>
+
+<!-- CREATE Y UPDATE ==> FORMULARIO -->
+ <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <div class="flex items-center gap-4 mb-4">
+        <label for="tipo" class="font-semibold w-24">Username</label>
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoUsuarioDialogo.username"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="tipo" class="font-semibold w-24">Email</label>
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoUsuarioDialogo.email"/>
+    </div>
+
+    <div class="flex items-center gap-4 mb-4">
+        <label for="tipo" class="font-semibold w-24">Contaseña</label>
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoUsuarioDialogo.password"/>
+    </div>
+
+    <div class="flex items-center gap-4 mb-4">
+        <label for="tipo" class="font-semibold w-24">Es Proveedor</label>
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoUsuarioDialogo.es_proveedor"/>
+    </div>
+    <div class="flex justify-end gap-2">
+        <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
+        <p-button label="Guardar" (click)="guardarTipo()" />
+    </div>
+</p-dialog>
