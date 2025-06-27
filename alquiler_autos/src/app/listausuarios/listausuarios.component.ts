@@ -20,6 +20,11 @@ export class ListausuariosComponent {
   tipoUsuarioDialogo: Usuario = new Usuario();
   nuevoTipo:boolean = true;
 
+proveedorOptions = [
+  { label: 'Sí', value: true },
+  { label: 'No', value: false }
+];
+
   obtenerUsuarios(){
     this.api.getEmpleados().subscribe(res => {
       this.listausuarios = res;

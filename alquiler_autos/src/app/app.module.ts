@@ -24,16 +24,26 @@ import { LoginComponent } from './login/login.component';
 
 import { CardModule } from 'primeng/card';
 import { MessageModule } from 'primeng/message';
+import { PasswordModule } from 'primeng/password';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../service/token.interceptor';
+import { ListaclienteComponent } from './listacliente/listacliente.component';
+import { HomeComponent } from './home/home.component';
+import { ListavehiculosComponent } from './listavehiculos/listavehiculos.component';
+import { ListafotosComponent } from './listafotos/listafotos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListausuariosComponent,
     LoginComponent,
+    ListaclienteComponent,
+    HomeComponent,
+    ListavehiculosComponent,
+    ListafotosComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +59,8 @@ import { TokenInterceptor } from '../service/token.interceptor';
     SelectModule,
     ConfirmDialogModule,
     DialogModule,
+    PasswordModule,
+    SelectButtonModule,
     HttpClientModule
   ],
   providers: [

@@ -1,4 +1,4 @@
-export interface FotoVehiculo {
+export class FotoVehiculo {
   id: number;
   vehiculo: number;
   imagen: string;
