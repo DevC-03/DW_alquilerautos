@@ -7,11 +7,15 @@ import { ListaclienteComponent } from './listacliente/listacliente.component';
 import { HomeComponent } from './home/home.component';
 import { ListavehiculosComponent } from './listavehiculos/listavehiculos.component';
 import { ListafotosComponent } from './listafotos/listafotos.component';
+import { ListapropietarioComponent } from './listapropietario/listapropietario.component';
+import { ListaempleadosComponent } from './listaempleados/listaempleados.component';
 
 
 const routes: Routes = [
   {path: "listausuarios", component: ListausuariosComponent, canActivate:[AuthGuard]},
   {path: "listaclientes", component: ListaclienteComponent, canActivate:[AuthGuard]},
+  {path: "listapropietarios", component: ListapropietarioComponent, canActivate:[AuthGuard]},
+  {path: "listaempleados", component: ListaempleadosComponent, canActivate:[AuthGuard]},
   {path: "listavehiculos", component: ListavehiculosComponent, canActivate:[AuthGuard]},
   {path: "listafotos", component: ListafotosComponent, canActivate:[AuthGuard]},
   {path: "login", component: LoginComponent},

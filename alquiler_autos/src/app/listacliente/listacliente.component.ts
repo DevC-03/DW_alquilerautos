@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../../model/cliente';
 import { ApiService } from '../../service/api.service';
+import { Usuario } from '../../model/usuario.model';
 
 @Component({
   selector: 'app-listacliente',
@@ -14,11 +15,14 @@ export class ListaclienteComponent {
 
   constructor(private api:ApiService){}
   listacliente: Cliente[];
-  tituloDialogo:string = "Nuevo Tipo";
   visible:boolean = false;
-
-  tipoClienteDialogo: Cliente = new Cliente();
   nuevoTipo:boolean = true;
+  tipoClienteDialogo: Cliente = new Cliente();
+
+  listausuarios: Usuario[];
+  tituloDialogo:string = "Nuevo Tipo";
+
+  tipoSeleccionado: Usuario;
 
   obtenerCliente(){
     this.api.getCliente().subscribe(res => {
@@ -26,8 +30,15 @@ export class ListaclienteComponent {
     });
   }
 
+  obtenerUsuarios(){
+    this.api.getUsuario().subscribe(res => {
+      this.listausuarios = res;
+    });
+  }
+
   ngOnInit() {
     this.obtenerCliente();
+    this.obtenerUsuarios();
   }
 
   editarCliente(listacliente:Cliente){
@@ -49,6 +60,7 @@ export class ListaclienteComponent {
   }
 
   guardarCliente(){
+    this.tipoClienteDialogo.usuario = this.tipoSeleccionado.id;
     if (this.nuevoTipo){
       this.api.postCliente(this.tipoClienteDialogo).subscribe(res => {
         this.obtenerCliente();

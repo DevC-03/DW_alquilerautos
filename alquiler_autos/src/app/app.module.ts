@@ -34,6 +34,8 @@ import { ListaclienteComponent } from './listacliente/listacliente.component';
 import { HomeComponent } from './home/home.component';
 import { ListavehiculosComponent } from './listavehiculos/listavehiculos.component';
 import { ListafotosComponent } from './listafotos/listafotos.component';
+import { ListapropietarioComponent } from './listapropietario/listapropietario.component';
+import { ListaempleadosComponent } from './listaempleados/listaempleados.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ListafotosComponent } from './listafotos/listafotos.component';
     HomeComponent,
     ListavehiculosComponent,
     ListafotosComponent,
+    ListapropietarioComponent,
+    ListaempleadosComponent,
   ],
   imports: [
     BrowserModule,

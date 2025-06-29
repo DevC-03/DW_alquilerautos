@@ -1,0 +1,84 @@
+<h1>Propietarios</h1>
+<!-- READ ==> TABLA -->
+<p-button label="Nuevo" icon="pi pi-plus" class="mr-2" (onClick)="abrirDialogo()" />
+<p-table [value]="listapropietario" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template #header>
+        <tr>
+            <th style="width:20%">Usuario</th>
+            <th style="width:20%">Telefono</th>
+            <th style="width:20%">Direccion</th>
+            <th style="width:20%">Reputacion</th>
+            <th style="width:20%">Fecha_Registro</th>
+            <th style="width:20%"></th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-Propietario let-ri="rowIndex">
+        <tr>
+            <td>
+                {{Propietario.propietario_user}}
+            </td>          
+            <td>
+                {{Propietario.telefono}}
+            </td>
+            <td>
+                {{Propietario.direccion}}
+            </td>
+            <td>
+                {{Propietario.reputacion}}
+            </td>
+            <td>
+                {{Propietario.fecha_registro}}
+            </td>
+            <!-- DELETE ==> BOTON -->
+            <td>
+                <div class="flex items-center justify-center gap-2">
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-pencil"
+                        (click)="editarPropietario(Propietario)"
+                        text
+                        rounded
+                        severity="secondary"
+                    ></button>
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        icon="pi pi-times"
+                        (click)="eliminarPropietario(Propietario)"
+                        text
+                        rounded
+                        severity="secondary"
+                    ></button>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<!-- CREATE Y UPDATE ==> FORMULARIO -->
+ <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">Usuario</label>
+        <p-select [options]="listausuarios" [(ngModel)]="tipoSeleccionado" optionLabel="username" placeholder="Username" class="w-full md:w-56" />
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="propietario" class="font-semibold w-24">Telefono</label>
+        <input pInputText id="propietario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoPropietarioDialogo.telefono"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="propietario" class="font-semibold w-24">Direccion</label>
+        <input pInputText id="propietario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoPropietarioDialogo.direccion"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="propietario" class="font-semibold w-24">Reputacion</label>
+        <input pInputText id="propietario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoPropietarioDialogo.reputacion"/>
+    </div>
+    <div class="flex justify-end gap-2">
+        <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
+        <p-button label="Guardar" (click)="guardarPropietario()" />
+    </div>
+</p-dialog>
+

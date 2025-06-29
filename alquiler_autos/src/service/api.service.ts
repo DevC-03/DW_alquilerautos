@@ -5,6 +5,8 @@ import { Usuario } from '../model/usuario.model';
 import { Cliente } from '../model/cliente';
 import { Vehiculo } from '../model/vehiculo.model';
 import { FotoVehiculo } from '../model/foto.model';
+import { Propietario } from '../model/propietario';
+import { Empleado } from '../model/empleado';
 
 @Injectable({
   providedIn: 'root',
@@ -52,21 +54,56 @@ export class ApiService {
         return this.http.get<Cliente[]>(this.ApiUrl + 'clientes/');
     }
 
-    //DELETE TipoProducto CRUD:Delete
     public deleteCliente(usuario:string): Observable<void>{
         return this.http.delete<void>(this.ApiUrl + 'clientes/' + usuario + "/");
     }
 
-    //PUT TipoProducto CRUD:Update
     public putCliente(cliente:Cliente): Observable<Cliente>{
         let body = JSON.stringify(cliente);
         return this.http.put<Cliente>(this.ApiUrl + 'clientes/' + cliente.usuario + "/",body,this.httpOptions);
     }
 
-    //POST TipoProducto CRUD:Create
     public postCliente(cliente:Cliente): Observable<Cliente>{
         let body = JSON.stringify(cliente);
         return this.http.post<Cliente>(this.ApiUrl + 'clientes/',body,this.httpOptions);
+    }
+
+  // PROPIETARIOS
+    public getPropietario(): Observable<Propietario[]> {
+        return this.http.get<Propietario[]>(this.ApiUrl + 'propietarios/');
+    }
+
+    public deletePropietario(usuario:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'propietarios/' + usuario + "/");
+    }
+
+    public putPropietario(propietario:Propietario): Observable<Propietario>{
+        let body = JSON.stringify(propietario);
+        return this.http.put<Propietario>(this.ApiUrl + 'propietarios/' + propietario.usuario + "/",body,this.httpOptions);
+    }
+
+    public postPropietario(propietario:Propietario): Observable<Propietario>{
+        let body = JSON.stringify(propietario);
+        return this.http.post<Propietario>(this.ApiUrl + 'propietarios/',body,this.httpOptions);
+    }
+
+  // EMPLEADOS
+    public getEmpleado(): Observable<Empleado[]> {
+        return this.http.get<Empleado[]>(this.ApiUrl + 'empleados/');
+    }
+
+    public deleteEmpleado(usuario:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'empleados/' + usuario + "/");
+    }
+
+    public putEmpleado(empleado:Empleado): Observable<Empleado>{
+        let body = JSON.stringify(empleado);
+        return this.http.put<Empleado>(this.ApiUrl + 'empleados/' + empleado.usuario + "/",body,this.httpOptions);
+    }
+
+    public postEmpleado(empleado:Empleado): Observable<Empleado>{
+        let body = JSON.stringify(empleado);
+        return this.http.post<Empleado>(this.ApiUrl + 'empleados/',body,this.httpOptions);
     }
 
   // VEHICULOS

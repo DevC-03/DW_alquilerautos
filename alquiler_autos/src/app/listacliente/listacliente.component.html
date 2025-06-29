@@ -4,7 +4,7 @@
 <p-table [value]="listacliente" [tableStyle]="{'min-width': '50rem'}">
     <ng-template #header>
         <tr>
-            <th style="width:20%">ID</th>
+            <th style="width:20%">Usuario</th>
             <th style="width:20%">Nombre</th>
             <th style="width:20%">Apellido</th>
             <th style="width:20%">fecha_nacimiento</th>
@@ -14,28 +14,28 @@
             <th style="width:20%"></th>
         </tr>
     </ng-template>
-    <ng-template #body let-cliente let-ri="rowIndex">
+    <ng-template #body let-Cliente let-ri="rowIndex">
         <tr>
             <td>
-                {{cliente.usuario}}
-            </td>            
+                {{Cliente.cliente_user}}
+            </td>          
             <td>
-                {{cliente.nombre}}
+                {{Cliente.nombre}}
             </td>
             <td>
-                {{cliente.apellido}}
+                {{Cliente.apellido}}
             </td>
             <td>
-                {{cliente.fecha_nacimiento}}
+                {{Cliente.fecha_nacimiento}}
             </td>
             <td>
-                {{cliente.licencia_conducir}}
+                {{Cliente.licencia_conducir}}
             </td>
             <td>
-                {{cliente.telefono}}
+                {{Cliente.telefono}}
             </td>
             <td>
-                {{cliente.reputacion}}
+                {{Cliente.reputacion}}
             </td>
             <!-- DELETE ==> BOTON -->
             <td>
@@ -45,7 +45,7 @@
                         pRipple
                         type="button"
                         icon="pi pi-pencil"
-                        (click)="editarCliente(cliente)"
+                        (click)="editarCliente(Cliente)"
                         text
                         rounded
                         severity="secondary"
@@ -55,7 +55,7 @@
                         pRipple
                         type="button"
                         icon="pi pi-times"
-                        (click)="eliminarCliente(cliente)"
+                        (click)="eliminarCliente(Cliente)"
                         text
                         rounded
                         severity="secondary"
@@ -69,12 +69,20 @@
 <!-- CREATE Y UPDATE ==> FORMULARIO -->
  <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">Usuario</label>
+        <p-select [options]="listausuarios" [(ngModel)]="tipoSeleccionado" optionLabel="username" placeholder="Username" class="w-full md:w-56" />
+    </div>
+    <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Nombre</label>
         <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.nombre"/>
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Apellido</label>
-        <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.nombre"/>
+        <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.apellido"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">fecha_nacimiento</label>
+        <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.fecha_nacimiento"/>
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Licencia</label>
@@ -83,6 +91,10 @@
     <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Telefono</label>
         <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.telefono"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">Reputacion</label>
+        <input pInputText id="usuario" class="flex-auto" autocomplete="off" [(ngModel)]="tipoClienteDialogo.reputacion"/>
     </div>
     <div class="flex justify-end gap-2">
         <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
