@@ -26,6 +26,7 @@ import { CardModule } from 'primeng/card';
 import { MessageModule } from 'primeng/message';
 import { PasswordModule } from 'primeng/password';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 import { FormsModule } from '@angular/forms';
@@ -36,6 +37,7 @@ import { ListavehiculosComponent } from './listavehiculos/listavehiculos.compone
 import { ListafotosComponent } from './listafotos/listafotos.component';
 import { ListapropietarioComponent } from './listapropietario/listapropietario.component';
 import { ListaempleadosComponent } from './listaempleados/listaempleados.component';
+import { ListachoferesComponent } from './listachoferes/listachoferes.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ListaempleadosComponent } from './listaempleados/listaempleados.compone
     ListafotosComponent,
     ListapropietarioComponent,
     ListaempleadosComponent,
+    ListachoferesComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { ListaempleadosComponent } from './listaempleados/listaempleados.compone
     DialogModule,
     PasswordModule,
     SelectButtonModule,
+    FileUploadModule,
     HttpClientModule
   ],
   providers: [

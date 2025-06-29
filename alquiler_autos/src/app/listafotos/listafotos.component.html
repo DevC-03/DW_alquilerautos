@@ -5,7 +5,8 @@
     <ng-template #header>
         <tr>
             <th style="width:20%">ID</th>
-            <th style="width:20%">Vehiculo</th>
+            <th style="width:20%">Marca</th>
+            <th style="width:20%">Modelo</th>
             <th style="width:20%">Imagen</th>
             <th style="width:20%">Es Principal</th>
             <th style="width:20%"></th>
@@ -17,7 +18,10 @@
                 {{foto.id}}
             </td>            
             <td>
-                {{foto.vehiculo}}
+                {{foto.marca_vehiculo}}
+            </td>
+            <td>
+                {{foto.modelo_vehiculo}}
             </td>
             <td>
                 <img src="{{foto.imagen}}" style="width:30%; height:auto;"/>
@@ -56,6 +60,14 @@
 
 <!-- CREATE Y UPDATE ==> FORMULARIO -->
  <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <div class="flex items-center gap-4 mb-4">
+        <label for="vehiculo" class="font-semibold w-24">Vehiculo</label>
+        <p-select [options]="listavehiculos" [(ngModel)]="tipoSeleccionado" optionLabel="placa" placeholder="Placa" class="w-full md:w-56" />
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">Imagen</label>
+        <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-upload" accept="image/*" maxFileSize="1000000" (onSelect)="onBasicUploadAuto($event)" chooseLabel="Browse" />
+    </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Es Principal</label>
         <p-selectbutton [options]="principalOptions" [(ngModel)]="tipoFotoVehiculoDialogo.es_principal" optionLabel="label" optionValue="value" aria-labelledby="basic" />

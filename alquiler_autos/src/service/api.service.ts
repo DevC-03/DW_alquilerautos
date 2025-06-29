@@ -7,6 +7,7 @@ import { Vehiculo } from '../model/vehiculo.model';
 import { FotoVehiculo } from '../model/foto.model';
 import { Propietario } from '../model/propietario';
 import { Empleado } from '../model/empleado';
+import { Chofer } from '../model/chofer';
 
 @Injectable({
   providedIn: 'root',
@@ -106,6 +107,25 @@ export class ApiService {
         return this.http.post<Empleado>(this.ApiUrl + 'empleados/',body,this.httpOptions);
     }
 
+  // CHOFERES
+    public getChofer(): Observable<Chofer[]> {
+        return this.http.get<Chofer[]>(this.ApiUrl + 'choferes/');
+    }
+
+    public deleteChofer(usuario:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'choferes/' + usuario + "/");
+    }
+
+    public putChofer(chofer:Chofer): Observable<Chofer>{
+        let body = JSON.stringify(chofer);
+        return this.http.put<Chofer>(this.ApiUrl + 'choferes/' + chofer.usuario + "/",body,this.httpOptions);
+    }
+
+    public postChofer(chofer:Chofer): Observable<Chofer>{
+        let body = JSON.stringify(chofer);
+        return this.http.post<Chofer>(this.ApiUrl + 'choferes/',body,this.httpOptions);
+    }
+
   // VEHICULOS
       public getVehiculo(): Observable<Vehiculo[]> {
         return this.http.get<Vehiculo[]>(this.ApiUrl + 'vehiculos/');
@@ -133,14 +153,11 @@ export class ApiService {
         return this.http.delete<void>(this.ApiUrl + 'fotos/' + id + "/");
     }
 
-    public putFotos(fotos:FotoVehiculo): Observable<FotoVehiculo>{
-        let body = JSON.stringify(FotoVehiculo);
-        return this.http.put<FotoVehiculo>(this.ApiUrl + 'fotos/' + fotos.id + "/",body,this.httpOptions);
+    public putFotos(fotos:FormData, id:string): Observable<FotoVehiculo>{
+        return this.http.put<FotoVehiculo>(this.ApiUrl + 'fotos/' + id + "/",fotos);
     }
 
-    public postFotos(fotos:FotoVehiculo): Observable<FotoVehiculo>{
-        let body = JSON.stringify(FotoVehiculo);
-        return this.http.post<FotoVehiculo>(this.ApiUrl + 'fotos/',body,this.httpOptions);
+    public postFotos(fotos:FormData): Observable<FotoVehiculo>{
+        return this.http.post<FotoVehiculo>(this.ApiUrl + 'fotos/',fotos);
     }
-
 }
