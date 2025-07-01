@@ -8,6 +8,10 @@ import { FotoVehiculo } from '../model/foto.model';
 import { Propietario } from '../model/propietario';
 import { Empleado } from '../model/empleado';
 import { Chofer } from '../model/chofer';
+import { Reserva } from '../model/reserva';
+import { Contrato } from '../model/contrato';
+import { Pago } from '../model/pago';
+import { Recibo } from '../model/recibo';
 
 @Injectable({
   providedIn: 'root',
@@ -137,7 +141,7 @@ export class ApiService {
 
     public putVehiculo(vehiculo:Vehiculo): Observable<Vehiculo>{
         let body = JSON.stringify(vehiculo);
-        return this.http.put<Vehiculo>(this.ApiUrl + 'vehiculos/' + vehiculo.id + "/",body,this.httpOptions);
+        return this.http.put<Vehiculo>(this.ApiUrl + 'vehiculos/' + vehiculo.propietario + "/",body,this.httpOptions);
     }
 
     public postVehiculo(vehiculo:Vehiculo): Observable<Vehiculo>{
@@ -159,5 +163,79 @@ export class ApiService {
 
     public postFotos(fotos:FormData): Observable<FotoVehiculo>{
         return this.http.post<FotoVehiculo>(this.ApiUrl + 'fotos/',fotos);
+    }
+  // RESERVAS
+      public getReserva(): Observable<Reserva[]> {
+        return this.http.get<Reserva[]>(this.ApiUrl + 'reservas/');
+    }
+
+    public deleteReserva(id:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'reservas/' + id + "/");
+    }
+
+    public putReserva(reserva:Reserva): Observable<Reserva>{
+        let body = JSON.stringify(reserva);
+        return this.http.put<Reserva>(this.ApiUrl + 'reservas/' + reserva.cliente + "/",body,this.httpOptions);
+    }
+
+    public postReserva(reserva:Reserva): Observable<Reserva>{
+        let body = JSON.stringify(reserva);
+        return this.http.post<Reserva>(this.ApiUrl + 'reservas/',body,this.httpOptions);
+    }
+  // CONTRATO
+      public getContrato(): Observable<Contrato[]> {
+        return this.http.get<Contrato[]>(this.ApiUrl + 'contratos/');
+    }
+
+    public deleteContrato(reserva:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'contratos/' + reserva + "/");
+    }
+
+    public putContrato(contrato:Contrato): Observable<Contrato>{
+        let body = JSON.stringify(contrato);
+        return this.http.put<Contrato>(this.ApiUrl + 'contratos/' + contrato.reserva + "/",body,this.httpOptions);
+    }
+
+    public postContrato(contrato:Contrato): Observable<Contrato>{
+        let body = JSON.stringify(contrato);
+        return this.http.post<Contrato>(this.ApiUrl + 'contratos/',body,this.httpOptions);
+    }
+
+  // PAGOS
+      public getPagos(): Observable<Pago[]> {
+        return this.http.get<Pago[]>(this.ApiUrl + 'pagos/');
+    }
+
+    public deletePagos(contrato:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'pagos/' + contrato + "/");
+    }
+
+    public putPagos(pagos:Pago): Observable<Pago>{
+        let body = JSON.stringify(pagos);
+        return this.http.put<Pago>(this.ApiUrl + 'pagos/' + pagos.contrato + "/",body,this.httpOptions);
+    }
+
+    public postPagos(pagos:Pago): Observable<Pago>{
+        let body = JSON.stringify(pagos);
+        return this.http.post<Pago>(this.ApiUrl + 'pagos/',body,this.httpOptions);
+    }
+
+  // RECIBOS
+    public getRecibos(): Observable<Recibo[]> {
+        return this.http.get<Recibo[]>(this.ApiUrl + 'recibos/');
+    }
+
+    public deleteRecibos(contrato:string): Observable<void>{
+        return this.http.delete<void>(this.ApiUrl + 'recibos/' + contrato + "/");
+    }
+
+    public putRecibos(recibo:Recibo): Observable<Recibo>{
+        let body = JSON.stringify(recibo);
+        return this.http.put<Recibo>(this.ApiUrl + 'recibos/' + recibo.contrato + "/",body,this.httpOptions);
+    }
+
+    public postRecibos(recibo:Recibo): Observable<Recibo>{
+        let body = JSON.stringify(recibo);
+        return this.http.post<Recibo>(this.ApiUrl + 'recibos/',body,this.httpOptions);
     }
 }

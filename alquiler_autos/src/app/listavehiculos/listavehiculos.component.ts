@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { Vehiculo } from '../../model/vehiculo.model';
+import { Propietario } from '../../model/propietario';
 
 @Component({
   selector: 'app-listavehiculos',
@@ -17,6 +18,8 @@ export class ListavehiculosComponent {
   tituloDialogo:string = "Nuevo Tipo";
   visible:boolean = false;
 
+  listapropietario: Propietario[];
+  tipoSeleccionado: Propietario;
   tipoVehiculoDialogo: Vehiculo = new Vehiculo();
   nuevoTipo:boolean = true;
 
@@ -26,8 +29,15 @@ export class ListavehiculosComponent {
     });
   }
 
+  obtenerPropietario(){
+      this.api.getPropietario().subscribe(res => {
+        this.listapropietario = res;
+      });
+  }
+
   ngOnInit() {
     this.obtenerVehiculos();
+    this.obtenerPropietario();
   }
 
   editarVehiculo(listavehiculos:Vehiculo){
@@ -37,7 +47,7 @@ export class ListavehiculosComponent {
   }
 
   eliminarVehiculo(listavehiculos:Vehiculo){
-    this.api.deleteVehiculo(listavehiculos.id.toString()).subscribe(() => {
+    this.api.deleteVehiculo(listavehiculos.propietario.toString()).subscribe(() => {
       this.obtenerVehiculos();
     });
   }

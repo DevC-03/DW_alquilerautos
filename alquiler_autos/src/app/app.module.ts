@@ -17,7 +17,9 @@ import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
-
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { MenubarModule } from 'primeng/menubar';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +30,6 @@ import { PasswordModule } from 'primeng/password';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileUploadModule } from 'primeng/fileupload';
 
-
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../service/token.interceptor';
 import { ListaclienteComponent } from './listacliente/listacliente.component';
@@ -38,6 +39,10 @@ import { ListafotosComponent } from './listafotos/listafotos.component';
 import { ListapropietarioComponent } from './listapropietario/listapropietario.component';
 import { ListaempleadosComponent } from './listaempleados/listaempleados.component';
 import { ListachoferesComponent } from './listachoferes/listachoferes.component';
+import { ListareservasComponent } from './listareservas/listareservas.component';
+import { ListacontratoComponent } from './listacontrato/listacontrato.component';
+import { ListapagoComponent } from './listapago/listapago.component';
+import { ListarecibosComponent } from './listarecibos/listarecibos.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,10 @@ import { ListachoferesComponent } from './listachoferes/listachoferes.component'
     ListapropietarioComponent,
     ListaempleadosComponent,
     ListachoferesComponent,
+    ListareservasComponent,
+    ListacontratoComponent,
+    ListapagoComponent,
+    ListarecibosComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +78,10 @@ import { ListachoferesComponent } from './listachoferes/listachoferes.component'
     PasswordModule,
     SelectButtonModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule,
+    CalendarModule,
+    CheckboxModule
   ],
   providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

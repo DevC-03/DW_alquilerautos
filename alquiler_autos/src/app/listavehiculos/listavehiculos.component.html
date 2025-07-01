@@ -1,23 +1,26 @@
-<h1>Tipo de Usuarios</h1>
+<h1>Vehiculo</h1>
 <!-- READ ==> TABLA -->
 <p-button label="Nuevo" icon="pi pi-plus" class="mr-2" (onClick)="abrirDialogo()" />
 <p-table [value]="listavehiculos" [tableStyle]="{'min-width': '50rem'}">
     <ng-template #header>
         <tr>
-            <th style="width:20%">ID</th>
+            <th style="width:20%">Propietario</th>
             <th style="width:20%">Marca</th>
             <th style="width:20%">Modelo</th>
             <th style="width:20%">Año</th>
             <th style="width:20%">Placa</th>
             <th style="width:20%">Precio</th>
             <th style="width:20%">Estado</th>
+            <th style="width:20%">Descripcion</th>
+            <th style="width:20%">Calificaciones</th>
+            <th style="width:20%">Reseñas</th>
             <th style="width:20%"></th>
         </tr>
     </ng-template>
     <ng-template #body let-vehiculo let-ri="rowIndex">
         <tr>
             <td>
-                {{vehiculo.id}}
+                {{vehiculo.propietario_vehiculo}}
             </td>            
             <td>
                 {{vehiculo.marca}}
@@ -36,6 +39,15 @@
             </td>
             <td>
                 {{vehiculo.estado}}
+            </td>
+            <td>
+                {{vehiculo.descripcion}}
+            </td>
+            <td>
+                {{vehiculo.promedio_calificaciones}}
+            </td>
+            <td>
+                {{vehiculo.cantidad_resenas}}
             </td>
             <!-- DELETE ==> BOTON -->
             <td>
@@ -69,6 +81,10 @@
 <!-- CREATE Y UPDATE ==> FORMULARIO -->
  <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
+        <label for="usuario" class="font-semibold w-24">Propietario</label>
+        <p-select [options]="listapropietario" [(ngModel)]="tipoSeleccionado" optionLabel="usuario" placeholder="Propietario id" class="w-full md:w-56" />
+    </div>
+    <div class="flex items-center gap-4 mb-4">
         <label for="tipo" class="font-semibold w-24">Marca</label>
         <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.marca"/>
     </div>
@@ -76,10 +92,10 @@
         <label for="tipo" class="font-semibold w-24">Modelo</label>
         <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.modelo"/>
     </div>
-    <!-- <div class="flex items-center gap-4 mb-4">
+    <div class="flex items-center gap-4 mb-4">
         <label for="tipo" class="font-semibold w-24">Año</label>
-        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.['año']"/>
-    </div>     -->
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo['año']"/>
+    </div>    
     <div class="flex items-center gap-4 mb-4">
         <label for="tipo" class="font-semibold w-24">Placa</label>
         <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.placa"/>
@@ -87,7 +103,11 @@
     <div class="flex items-center gap-4 mb-4">
         <label for="tipo" class="font-semibold w-24">Precio</label>
         <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.precio_diario"/>
-    </div> 
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="tipo" class="font-semibold w-24">Descripcion</label>
+        <input pInputText id="tipo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoVehiculoDialogo.descripcion"/>
+    </div>
     <div class="flex justify-end gap-2">
         <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
         <p-button label="Guardar" (click)="guardarVehiculo()" />

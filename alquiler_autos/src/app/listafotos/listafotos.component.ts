@@ -10,6 +10,7 @@ import { Vehiculo } from '../../model/vehiculo.model';
   styleUrl: './listafotos.component.css',
   providers: [ApiService]
 })
+
 export class ListafotosComponent {
 
   constructor(private api:ApiService){}
@@ -68,26 +69,43 @@ export class ListafotosComponent {
 
   guardarFotos(){
     const formDataVehiculo = new FormData();
+    
+    // Asignar el vehículo seleccionado al objeto
+    if (this.tipoSeleccionado) {
+      this.tipoFotoVehiculoDialogo.vehiculo = this.tipoSeleccionado.propietario;
+    }
+    
     if (this.nuevoTipo){
-      formDataVehiculo.append('imagen',this.tipoFotoVehiculoDialogo.imagen)
       formDataVehiculo.append('vehiculo',this.tipoFotoVehiculoDialogo.vehiculo.toString())
+      formDataVehiculo.append('es_principal',this.tipoFotoVehiculoDialogo.es_principal.toString())
       if (this.imagenSeleccionada){
         formDataVehiculo.append('imagen',this.imagenSeleccionada)
       }
-      this.api.postFotos(formDataVehiculo).subscribe(res => {
-        this.obtenerFotos();
+      this.api.postFotos(formDataVehiculo).subscribe({
+        next: (res) => {
+          this.obtenerFotos();
+          this.visible = false;
+        },
+        error: (error) => {
+          console.error('Error al crear foto:', error);
+        }
       });
     } else {
-      formDataVehiculo.append('imagen',this.tipoFotoVehiculoDialogo.imagen)
       formDataVehiculo.append('vehiculo',this.tipoFotoVehiculoDialogo.vehiculo.toString())
+      formDataVehiculo.append('es_principal',this.tipoFotoVehiculoDialogo.es_principal.toString())
       if (this.imagenSeleccionada){
         formDataVehiculo.append('imagen',this.imagenSeleccionada)
       }
-      this.api.putFotos(formDataVehiculo, this.tipoFotoVehiculoDialogo.vehiculo.toString()).subscribe(res => {
-        this.obtenerFotos();
+      this.api.putFotos(formDataVehiculo, this.tipoFotoVehiculoDialogo.id.toString()).subscribe({
+        next: (res) => {
+          this.obtenerFotos();
+          this.visible = false;
+        },
+        error: (error) => {
+          console.error('Error al actualizar foto:', error);
+        }
       });
     }
-    this.visible = false;
   }
 
   onBasicUploadAuto(event:any){
