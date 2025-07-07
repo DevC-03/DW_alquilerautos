@@ -15,7 +15,7 @@
     <ng-template #body let-contrato let-ri="rowIndex">
         <tr>
             <td>
-                {{contrato.reserva}}
+                {{contrato.contrato_reserva}}
             </td>          
             <td>
                 {{contrato.fecha_inicio}}
@@ -59,18 +59,30 @@
 </p-table>
 
 <!-- CREATE Y UPDATE ==> FORMULARIO -->
- <!-- <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+<p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
-        <label for="usuario" class="font-semibold w-24">Usuario</label>
-        <p-select [options]="listausuarios" [(ngModel)]="tipoSeleccionado" optionLabel="username" placeholder="Username" class="w-full md:w-56" />
+        <label for="usuario" class="font-semibold w-24">Reserva</label>
+        <p-select [options]="listareserva" [(ngModel)]="tipoSeleccionado" optionLabel="cliente_reserva" placeholder="Reserva" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
-        <label for="empleado" class="font-semibold w-24">Cargo</label>
-        <input pInputText id="empleado" class="flex-auto" autocomplete="off" [(ngModel)]="tipoEmpleadoDialogo.cargo"/>
+        <label for="contrato" class="font-semibold w-24">Fecha Inicio</label>
+        <input pInputText id="contrato" class="flex-auto" autocomplete="off" [(ngModel)]="tipoContratoDialogo.fecha_inicio" placeholder="yyyy-mm-dd"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="contrato" class="font-semibold w-24">Fecha Fin</label>
+        <input pInputText id="contrato" class="flex-auto" autocomplete="off" [(ngModel)]="tipoContratoDialogo.fecha_fin" placeholder="yyyy-mm-dd"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="contrato" class="font-semibold w-24">Precio Total</label>
+        <input pInputText id="contrato" class="flex-auto" autocomplete="off" [(ngModel)]="tipoContratoDialogo.precio_total"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="contrato" class="font-semibold w-24">Estado</label>
+        <input pInputText id="contrato" class="flex-auto" autocomplete="off" [(ngModel)]="tipoContratoDialogo.estado"/>
     </div>
     <div class="flex justify-end gap-2">
         <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
-        <p-button label="Guardar" (click)="guardarEmpleado()" />
+        <p-button label="Guardar" (click)="guardarContrato()" />
     </div>
-</p-dialog> -->
+</p-dialog>
 

@@ -25,7 +25,7 @@
                 {{reserva.vehiculo_reserva}}
             </td>
             <td>
-                {{reserva.chofer}}
+                {{reserva.chofer_reserva}}
             </td>
             <td>
                 {{reserva.fecha_inicio}}
@@ -78,15 +78,15 @@
 <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
         <label for="cliente" class="font-semibold w-24">Cliente</label>
-        <p-dropdown [options]="listaclientes" [(ngModel)]="tipoSeleccionado" optionLabel="usuario" placeholder="Seleccionar Cliente" class="w-full md:w-56" />
+        <p-dropdown [options]="listaclientes" [(ngModel)]="tipoSeleccionado" optionLabel="nombre" placeholder="Seleccionar Cliente" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="vehiculo" class="font-semibold w-24">Vehiculo</label>
-        <input pInputText id="vehiculo" class="flex-auto" autocomplete="off" [(ngModel)]="tipoReservaDialogo.vehiculo"/>
+        <p-dropdown [options]="listavehiculos" [(ngModel)]="vehiculoSeleccionado" optionLabel="placa" placeholder="Seleccionar Vehiculo" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="chofer" class="font-semibold w-24">Chofer</label>
-        <input pInputText id="chofer" class="flex-auto" autocomplete="off" [(ngModel)]="tipoReservaDialogo.chofer"/>
+        <p-dropdown [options]="listachofer" [(ngModel)]="choferSeleccionado" optionLabel="chofer_user" placeholder="Seleccionar Vehiculo" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="fecha_inicio" class="font-semibold w-24">Fecha Inicio</label>

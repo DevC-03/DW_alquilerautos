@@ -55,18 +55,26 @@
 </p-table>
 
 <!-- CREATE Y UPDATE ==> FORMULARIO -->
- <!-- <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+ <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
         <label for="usuario" class="font-semibold w-24">Usuario</label>
-        <p-select [options]="listausuarios" [(ngModel)]="tipoSeleccionado" optionLabel="username" placeholder="Username" class="w-full md:w-56" />
+        <p-select [options]="listacontratos" [(ngModel)]="tipoSeleccionado" optionLabel="contrato_reserva" placeholder="Username" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
-        <label for="empleado" class="font-semibold w-24">Cargo</label>
-        <input pInputText id="empleado" class="flex-auto" autocomplete="off" [(ngModel)]="tipoEmpleadoDialogo.cargo"/>
+        <label for="pagos" class="font-semibold w-24">Monto</label>
+        <input pInputText id="pagos" class="flex-auto" autocomplete="off" [(ngModel)]="tipoPagosDialogo.monto"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="pagos" class="font-semibold w-24">Metodo de Pago</label>
+        <input pInputText id="pagos" class="flex-auto" autocomplete="off" [(ngModel)]="tipoPagosDialogo.metodo_pago"/>
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="pagos" class="font-semibold w-24">Reembolsado</label>
+        <p-checkbox id="pagos" [(ngModel)]="tipoPagosDialogo.es_reembolsado" [binary]="true" />
     </div>
     <div class="flex justify-end gap-2">
         <p-button label="Cancelar" severity="secondary" (click)="visible = false" />
-        <p-button label="Guardar" (click)="guardarEmpleado()" />
+        <p-button label="Guardar" (click)="guardarPagos()" />
     </div>
-</p-dialog> -->
+</p-dialog>
 

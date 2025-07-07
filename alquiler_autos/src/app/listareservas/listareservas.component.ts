@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { Reserva } from '../../model/reserva';
 import { Cliente } from '../../model/cliente';
+import { Vehiculo } from '../../model/vehiculo.model';
+import { Chofer } from '../../model/chofer';
 
 @Component({
   selector: 'app-listareservas',
@@ -23,6 +25,12 @@ export class ListareservasComponent {
   tipoReservaDialogo: Reserva = new Reserva();
   nuevoTipo:boolean = true;
 
+  listavehiculos: Vehiculo[] = [];
+  vehiculoSeleccionado: Vehiculo | null;
+
+  listachofer: Chofer[] = [];
+  choferSeleccionado: Chofer | null;
+
   obtenerReservas(){
     this.api.getReserva().subscribe(res => {
       this.listareservas = res;
@@ -35,9 +43,23 @@ export class ListareservasComponent {
       });
   }
 
+  obtenerVehiculos(){
+    this.api.getVehiculo().subscribe(res => {
+      this.listavehiculos = res;
+    });
+  }
+
+  obtenerChofer(){
+    this.api.getChofer().subscribe(res => {
+      this.listachofer = res;
+    });
+  }
+
   ngOnInit() {
     this.obtenerReservas();
     this.obtenerClientes();
+    this.obtenerVehiculos();
+    this.obtenerChofer();
   }
 
   editarReservas(listareserva:Reserva){

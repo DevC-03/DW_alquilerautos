@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMall - Venta de Autos Nuevos y Usados</title>
+    <link rel="stylesheet" href="showalquilar.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Encuentra tu auto perfecto</h2>
+                <p>Más de 3,000 autos nuevos y usados disponibles</p>
+                <form class="search-form">
+                    <input type="text" placeholder="Buscar por marca, modelo...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <aside class="sidebar">
+            <div class="filter-card">
+                <h3><i class="fas fa-filter"></i> Filtros</h3>
+
+                <div class="filter-section">
+                    <h4>Tipo de vehículo</h4>
+                    <ul>
+                        <li><a href="#">Autos (3,381)</a></li>
+                        <li class="active"><a href="#">Autos+ verbandes</a></li>
+                    </ul>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Condición</h4>
+                    <ul>
+                        <li><a href="#">Usados (2,372)</a></li>
+                        <li><a href="#">Seminuevos (939)</a></li>
+                        <li><a href="#">Nuevos (70)</a></li>
+                    </ul>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Marcas</h4>
+                    <ul>
+                        <li><a href="#">Toyota (278)</a></li>
+                        <li><a href="#">Volkswagen (224)</a></li>
+                        <li><a href="#">Mercedes-Benz (200)</a></li>
+                        <li><a href="#">Nissan (195)</a></li>
+                        <li><a href="#">Hyundai (153)</a></li>
+                        <li><a href="#">Honda (178)</a></li>
+                        <li><a href="#">Kia (146)</a></li>
+                        <li><a href="#">Ford (136)</a></li>
+                    </ul>
+                </div>
+
+                <button class="btn filter-btn">Aplicar Filtros</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="results-header">
+                <h2>0 Resultados</h2>
+                <div class="sort-options">
+                    <span>Ordenar por:</span>
+                    <select>
+                        <option>Recomendados</option>
+                        <option>Precio: Menor a Mayor</option>
+                        <option>Precio: Mayor a Menor</option>
+                        <option>Kilometraje</option>
+                        <option>Año</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="car-listings">
+                <article class="car-card" *ngFor="let auto of listavehiculos">
+                    <div class="car-image" [style.background-image]="'url(' + getImagenPrincipal(auto.id) + ')'"></div>
+                    <div class="car-content">
+                        <h3>{{ auto.marca }} {{ auto.modelo }} {{ auto['año'] }}</h3>
+                        <div class="car-specs">
+                            <span><i class="fas fa-gas-pump"></i> Gasolina</span>
+                            <span><i class="fas fa-cog"></i> Automática</span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Peru
+                        </div>
+                        <div class="car-price">
+                            ${{ auto.precio_diario }} / día
+                        </div>
+                        <div class="car-actions">
+                            <button class="btn btn-outline"><i class="far fa-heart"></i> Guardar</button>
+                            <button class="btn"><i class="fas fa-phone-alt"></i> Contactar</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

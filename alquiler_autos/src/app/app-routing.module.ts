@@ -14,6 +14,7 @@ import { ListareservasComponent } from './listareservas/listareservas.component'
 import { ListacontratoComponent } from './listacontrato/listacontrato.component';
 import { ListapagoComponent } from './listapago/listapago.component';
 import { ListarecibosComponent } from './listarecibos/listarecibos.component';
+import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: "listapagos", component: ListapagoComponent, canActivate:[AuthGuard]},
   {path: "listarecibos", component: ListarecibosComponent, canActivate:[AuthGuard]},
   {path: "login", component: LoginComponent},
-  {path: "home", component: HomeComponent}
+  {path: "home", component: HomeComponent},
+  {path :"alquilar", component: ShowalquilarComponent}
 ];
 
 @NgModule({

@@ -43,6 +43,7 @@ import { ListareservasComponent } from './listareservas/listareservas.component'
 import { ListacontratoComponent } from './listacontrato/listacontrato.component';
 import { ListapagoComponent } from './listapago/listapago.component';
 import { ListarecibosComponent } from './listarecibos/listarecibos.component';
+import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ListarecibosComponent } from './listarecibos/listarecibos.component';
     ListacontratoComponent,
     ListapagoComponent,
     ListarecibosComponent,
+    ShowalquilarComponent,
   ],
   imports: [
     BrowserModule,
