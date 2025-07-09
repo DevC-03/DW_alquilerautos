@@ -44,6 +44,9 @@ import { ListacontratoComponent } from './listacontrato/listacontrato.component'
 import { ListapagoComponent } from './listapago/listapago.component';
 import { ListarecibosComponent } from './listarecibos/listarecibos.component';
 import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
+import { DetallealquilerComponent } from './detallealquiler/detallealquiler.component';
+import { PaneladminComponent } from './paneladmin/paneladmin.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
     ListapagoComponent,
     ListarecibosComponent,
     ShowalquilarComponent,
+    DetallealquilerComponent,
+    PaneladminComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<div class="pagina-detalle" *ngIf="vehiculo">
+  <div class="contenido">
+    
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="info-vehiculo">
+      <div class="foto-container">
+        <img *ngIf="fotoPrincipal" [src]="fotoPrincipal" alt="Foto del vehículo" />
+      </div>
+
+      <div class="descripcion">
+        <h2>{{ vehiculo.marca }} {{ vehiculo.modelo }} - {{ vehiculo['año'] }}</h2>
+        <p><strong>Placa:</strong> {{ vehiculo.placa }}</p>
+        <p><strong>Estado:</strong> {{ vehiculo.estado }}</p>
+        <p><strong>Descripción:</strong> {{ vehiculo.descripcion }}</p>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="formulario-contacto">
+      <h3>S/ {{ vehiculo.precio_diario }} <span>/día</span></h3>
+      
+      <div class="grupo-fechas">
+        <label>Fecha de inicio:</label>
+        <input type="date" />
+
+        <label>Fecha de fin:</label>
+        <input type="date" />
+      </div>
+
+      <div class="grupo-opcional">
+        <label>¿Requiere chofer?</label>
+        <input type="checkbox" />
+      </div>
+ 
+      <button class="btn-reservar">Reservar</button>
+      <p class="texto-secundario">No se hará ningún cargo por el momento</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!vehiculo" class="cargando">
+  <p>Cargando información del vehículo...</p>
+</div>

@@ -22,7 +22,7 @@ export class LoginComponent {
     this.auth.login(this.username, this.password).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/listausuarios']);
+        this.router.navigate(['/panel']);
       },
       error: () => {
         this.error = 'Credenciales incorrectas';

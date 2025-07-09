@@ -238,4 +238,9 @@ export class ApiService {
         let body = JSON.stringify(recibo);
         return this.http.post<Recibo>(this.ApiUrl + 'recibos/',body,this.httpOptions);
     }
+    
+    // OBTERNER VEHICULO POR ID
+    getVehiculoPorId(id: number) {
+        return this.http.get<Vehiculo>(`http://localhost:8000/api/vehiculos/${id}/`);
+    }
 }

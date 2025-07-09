@@ -62,15 +62,19 @@ export class ListareservasComponent {
     this.obtenerChofer();
   }
 
-  editarReservas(listareserva:Reserva){
-    this.visible = true;
-    this.nuevoTipo = false;
-    this.tituloDialogo = "Editar Reserva";
-    this.tipoReservaDialogo = {...listareserva};
+  editarReservas(listareserva: Reserva){
+  this.visible = true;
+  this.nuevoTipo = false;
+  this.tituloDialogo = "Editar Reserva";
+  this.tipoReservaDialogo = { ...listareserva };
+
+  this.tipoSeleccionado = this.listaclientes.find(c => c.usuario === listareserva.cliente) || null;
+  this.vehiculoSeleccionado = this.listavehiculos.find(v => v.id === listareserva.vehiculo) || null;
+  this.choferSeleccionado = this.listachofer.find(c => c.usuario === listareserva.chofer) || null;
   }
 
   eliminarReservas(listareserva:Reserva){
-    this.api.deleteReserva(listareserva.cliente.toString()).subscribe(() => {
+    this.api.deleteReserva(listareserva.id.toString()).subscribe(() => {
       this.obtenerReservas();
     });
   }
@@ -84,26 +88,33 @@ export class ListareservasComponent {
   }
 
   guardarReservas(){
-    if (this.tipoSeleccionado) {
-      this.tipoReservaDialogo.cliente = this.tipoSeleccionado.usuario;
-    }
-    
-    if (!this.tipoReservaDialogo.cliente || !this.tipoReservaDialogo.vehiculo) {
-      alert('Por favor complete los campos obligatorios');
-      return;
-    }
-    
-    if (this.nuevoTipo){
-      this.api.postReserva(this.tipoReservaDialogo).subscribe(res => {
-        this.obtenerReservas();
-        this.visible = false;
-      });
-    } else {
-      this.api.putReserva(this.tipoReservaDialogo).subscribe(res => {
-        this.obtenerReservas();
-        this.visible = false;
-      });
-    }
+  if (this.tipoSeleccionado) {
+    this.tipoReservaDialogo.cliente = this.tipoSeleccionado.usuario;
   }
 
+  if (this.vehiculoSeleccionado) {
+    this.tipoReservaDialogo.vehiculo = this.vehiculoSeleccionado.id;
+  }
+
+  if (this.choferSeleccionado) {
+    this.tipoReservaDialogo.chofer = this.choferSeleccionado.usuario;
+  }
+
+  if (!this.tipoReservaDialogo.cliente || !this.tipoReservaDialogo.vehiculo) {
+    alert('Por favor complete los campos obligatorios');
+    return;
+  }
+
+  if (this.nuevoTipo){
+    this.api.postReserva(this.tipoReservaDialogo).subscribe(res => {
+      this.obtenerReservas();
+      this.visible = false;
+    });
+  } else {
+    this.api.putReserva(this.tipoReservaDialogo).subscribe(res => {
+      this.obtenerReservas();
+      this.visible = false;
+    });
+  }
+  }
 }

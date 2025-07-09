@@ -65,5 +65,4 @@ proveedorOptions = [
     }
     this.visible = false;
   }
-  
 }

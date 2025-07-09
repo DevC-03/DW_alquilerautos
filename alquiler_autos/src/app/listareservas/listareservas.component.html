@@ -78,11 +78,11 @@
 <p-dialog header="{{tituloDialogo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex items-center gap-4 mb-4">
         <label for="cliente" class="font-semibold w-24">Cliente</label>
-        <p-dropdown [options]="listaclientes" [(ngModel)]="tipoSeleccionado" optionLabel="nombre" placeholder="Seleccionar Cliente" class="w-full md:w-56" />
+        <p-dropdown [options]="listaclientes" [(ngModel)]="tipoSeleccionado" optionLabel="usuario" placeholder="Seleccionar Cliente" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="vehiculo" class="font-semibold w-24">Vehiculo</label>
-        <p-dropdown [options]="listavehiculos" [(ngModel)]="vehiculoSeleccionado" optionLabel="placa" placeholder="Seleccionar Vehiculo" class="w-full md:w-56" />
+        <p-dropdown [options]="listavehiculos" [(ngModel)]="vehiculoSeleccionado" optionLabel="id" placeholder="Seleccionar Vehiculo" class="w-full md:w-56" />
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="chofer" class="font-semibold w-24">Chofer</label>
@@ -90,15 +90,11 @@
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="fecha_inicio" class="font-semibold w-24">Fecha Inicio</label>
-        <p-calendar id="fecha_inicio" [(ngModel)]="tipoReservaDialogo.fecha_inicio" dateFormat="dd/mm/yy" class="w-full md:w-56" />
+        <input pInputText id="fecha_inicio" class="flex-auto" autocomplete="off" [(ngModel)]="tipoReservaDialogo.fecha_inicio"/>
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="fecha_fin" class="font-semibold w-24">Fecha Fin</label>
-        <p-calendar id="fecha_fin" [(ngModel)]="tipoReservaDialogo.fecha_fin" dateFormat="dd/mm/yy" class="w-full md:w-56" />
-    </div>
-    <div class="flex items-center gap-4 mb-4">
-        <label for="estado" class="font-semibold w-24">Estado</label>
-        <input pInputText id="estado" class="flex-auto" autocomplete="off" [(ngModel)]="tipoReservaDialogo.estado"/>
+        <input pInputText id="fecha_inicio" class="flex-auto" autocomplete="off" [(ngModel)]="tipoReservaDialogo.fecha_fin"/>
     </div>
     <div class="flex items-center gap-4 mb-4">
         <label for="precio" class="font-semibold w-24">Precio</label>
