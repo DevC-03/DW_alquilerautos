@@ -12,30 +12,68 @@ import { FotoVehiculo } from '../../model/foto.model';
   providers: [ApiService]
 })
 export class DetallealquilerComponent {
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
-
   vehiculo: Vehiculo | null = null;
   fotos: FotoVehiculo[] = [];
   fotoPrincipal: string = '';
+
+  fechaInicio: string = '';
+  fechaFin: string = '';
+  requiereChofer: boolean = false;
+
+  constructor(private api: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
       this.api.getVehiculoPorId(id).subscribe(res => {
         this.vehiculo = res;
-        this.obtenerFotos(); // solo llamamos fotos cuando ya tenemos el vehículo
+        this.obtenerFotos();
       });
     }
   }
 
   obtenerFotos() {
     this.api.getFotos().subscribe(res => {
-      // Filtrar fotos del vehículo actual
       const fotosVehiculo = res.filter(f => f.vehiculo === this.vehiculo?.id);
       const principal = fotosVehiculo.find(f => f.es_principal);
-
       this.fotoPrincipal = principal?.imagen || '';
     });
   }
 
+  calcularPrecioTotal(): number {
+    if (!this.fechaInicio || !this.fechaFin || !this.vehiculo) return 0;
+    const inicio = new Date(this.fechaInicio);
+    const fin = new Date(this.fechaFin);
+    const dias = Math.ceil((fin.getTime() - inicio.getTime()) / (1000 * 3600 * 24));
+    return dias > 0 ? dias * Number(this.vehiculo.precio_diario) : 0;
+  }
+
+  reservar() {
+    if (!this.fechaInicio || !this.fechaFin || !this.vehiculo) {
+      alert("Completa todos los campos.");
+      return;
+    }
+
+    const precio_total = this.calcularPrecioTotal();
+
+    const datosReserva = {
+      cliente: 1, // ⚠️ reemplazar por ID del cliente autenticado si lo tienes
+      vehiculo: this.vehiculo.id,
+      fecha_inicio: this.fechaInicio,
+      fecha_fin: this.fechaFin,
+      requiere_chofer: this.requiereChofer,
+      seguro: false, // puedes agregar esto como otro checkbox si lo necesitas
+      precio_total: precio_total
+    };
+
+    this.api.crearReserva(datosReserva).subscribe({
+      next: res => {
+        alert("Reserva realizada con éxito");
+      },
+      error: err => {
+        console.error(err);
+        alert("Error al hacer la reserva");
+      }
+    });
+  }
 }

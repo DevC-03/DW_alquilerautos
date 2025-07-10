@@ -15,29 +15,27 @@
       </div>
     </div>
 
-    <!-- COLUMNA DERECHA -->
-    <div class="formulario-contacto">
-      <h3>S/ {{ vehiculo.precio_diario }} <span>/día</span></h3>
-      
-      <div class="grupo-fechas">
-        <label>Fecha de inicio:</label>
-        <input type="date" />
+<div class="formulario-contacto">
+  <h3>S/ {{ vehiculo.precio_diario }} <span>/día</span></h3>
+  
+  <div class="grupo-fechas">
+    <label>Fecha de inicio:</label>
+    <input type="date" [(ngModel)]="fechaInicio" name="fechaInicio" />
 
-        <label>Fecha de fin:</label>
-        <input type="date" />
-      </div>
-
-      <div class="grupo-opcional">
-        <label>¿Requiere chofer?</label>
-        <input type="checkbox" />
-      </div>
- 
-      <button class="btn-reservar">Reservar</button>
-      <p class="texto-secundario">No se hará ningún cargo por el momento</p>
-    </div>
+    <label>Fecha de fin:</label>
+    <input type="date" [(ngModel)]="fechaFin" name="fechaFin" />
   </div>
+
+  <div class="grupo-opcional">
+    <label>¿Requiere chofer?</label>
+    <input type="checkbox" [(ngModel)]="requiereChofer" name="requiereChofer" />
+  </div>
+
+  <div *ngIf="fechaInicio && fechaFin">
+    <p><strong>Total estimado: S/ {{ calcularPrecioTotal() }}</strong></p>
+  </div>
+
+  <button class="btn-reservar" (click)="reservar()">Reservar</button>
+  <p class="texto-secundario">No se hará ningún cargo por el momento</p>
 </div>
 
-<div *ngIf="!vehiculo" class="cargando">
-  <p>Cargando información del vehículo...</p>
-</div>

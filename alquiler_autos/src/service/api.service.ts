@@ -243,4 +243,9 @@ export class ApiService {
     getVehiculoPorId(id: number) {
         return this.http.get<Vehiculo>(`http://localhost:8000/api/vehiculos/${id}/`);
     }
+
+    // CREAR RESERVA
+    crearReserva(reserva: any) {
+    return this.http.post('http://localhost:8000/api/reservas/', reserva);
+    }
 }
