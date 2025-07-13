@@ -15,6 +15,11 @@ export class AppComponent {
 
   constructor(public auth: AuthService, private router: Router) {}
 
+  esRutaSinNavbar(): boolean {
+    const ruta = this.router.url;
+    return ruta === '/panel';
+  }
+
   ngOnInit() {
     if (this.auth.isAuthenticated()) {
       this.auth.cargarUsuario();

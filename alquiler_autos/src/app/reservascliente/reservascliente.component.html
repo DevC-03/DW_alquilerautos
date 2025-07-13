@@ -1,0 +1,35 @@
+<p-table [value]="listareservas" [tableStyle]="{ 'min-width': '60rem' }">
+  <ng-template #caption>
+    <div class="flex items-center justify-between">
+      <span class="text-xl font-bold">Mis Reservas</span>
+    </div>
+  </ng-template>
+
+  <ng-template #header>
+    <tr>
+      <th>Vehículo</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Fin</th>
+      <th>Precio Total</th>
+      <th>Estado</th>
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-reserva>
+    <tr>
+      <td>{{ reserva.vehiculo }}</td> <!-- Puedes reemplazar con placa si lo deseas -->
+      <td>{{ reserva.fecha_inicio | date: 'shortDate' }}</td>
+      <td>{{ reserva.fecha_fin | date: 'shortDate' }}</td>
+      <td>{{ reserva.precio_total | currency: 'USD' }}</td>
+      <td>
+        <p-tag [value]="reserva.estado" [severity]="getSeverity(reserva.estado)" />
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template #footer>
+    <tr>
+      <td colspan="6">Total: {{ listareservas.length }} reservas</td>
+    </tr>
+  </ng-template>
+</p-table>

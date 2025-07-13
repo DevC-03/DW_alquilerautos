@@ -47,6 +47,11 @@ import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
 import { DetallealquilerComponent } from './detallealquiler/detallealquiler.component';
 import { PaneladminComponent } from './paneladmin/paneladmin.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PublicarComponent } from './publicar/publicar.component';
+import { ReservasclienteComponent } from './reservascliente/reservascliente.component';
+import { TagModule } from 'primeng/tag';
+import { PerfilComponent } from './perfil/perfil.component';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +73,9 @@ import { RegistroComponent } from './registro/registro.component';
     DetallealquilerComponent,
     PaneladminComponent,
     RegistroComponent,
+    PublicarComponent,
+    ReservasclienteComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +97,8 @@ import { RegistroComponent } from './registro/registro.component';
     HttpClientModule,
     DropdownModule,
     CalendarModule,
-    CheckboxModule
+    CheckboxModule,
+    TagModule,
   ],
   providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -19,6 +19,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
     this.usuario = null;
   }
 
@@ -36,4 +37,17 @@ export class AuthService {
       }
     });
   }
+  
+  register(data: any) {
+    return this.http.post('http://127.0.0.1:8000/api/registro/', data);
+  }
+
+  crearCliente(data: any) {
+  return this.http.post('http://127.0.0.1:8000/api/clientes/', data);
+  }
+
+  crearPropietario(data: any) {
+    return this.http.post('http://127.0.0.1:8000/api/propietarios/', data);
+  }
+
 }

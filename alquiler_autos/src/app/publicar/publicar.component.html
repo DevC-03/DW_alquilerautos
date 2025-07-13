@@ -1,0 +1,48 @@
+<div class="container mt-4" *ngIf="esPropietario; else sinPermisos">
+  <h2>Publicar vehículo</h2>
+
+  <form (ngSubmit)="guardarVehiculo()">
+    <div class="form-group">
+      <label>Marca:</label>
+      <input type="text" class="form-control" [(ngModel)]="publicarvehiculo.marca" name="marca" required>
+    </div>
+
+    <div class="form-group">
+      <label>Modelo:</label>
+      <input type="text" class="form-control" [(ngModel)]="publicarvehiculo.modelo" name="modelo" required>
+    </div>
+
+    <div class="form-group">
+      <label>Año:</label>
+      <input type="number" class="form-control" [(ngModel)]="publicarvehiculo['año']" name="año" required>
+    </div>
+
+    <div class="form-group">
+      <label>Placa:</label>
+      <input type="text" class="form-control" [(ngModel)]="publicarvehiculo.placa" name="placa" required>
+    </div>
+
+    <div class="form-group">
+      <label>Precio por día (S/):</label>
+      <input type="number" class="form-control" [(ngModel)]="publicarvehiculo.precio_diario" name="precio_diario" required>
+    </div>
+
+    <div class="form-group">
+      <label>Descripción:</label>
+      <textarea class="form-control" [(ngModel)]="publicarvehiculo.descripcion" name="descripcion"></textarea>
+    </div>
+
+    <div class="form-group">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" required>
+    </div>
+    
+    <button class="btn btn-primary mt-3">Guardar</button>
+  </form>
+</div>
+
+<ng-template #sinPermisos>
+  <div class="alert alert-danger mt-4 text-center">
+    <h4>🚫 Solo los <strong>propietarios</strong> pueden publicar vehículos.</h4>
+    <p>Por favor crea tu perfil de propietario para acceder a esta sección.</p>
+  </div>
+</ng-template>

@@ -164,7 +164,7 @@ export class ApiService {
     public postFotos(fotos:FormData): Observable<FotoVehiculo>{
         return this.http.post<FotoVehiculo>(this.ApiUrl + 'fotos/',fotos);
     }
-  // RESERVAS
+    // RESERVAS
       public getReserva(): Observable<Reserva[]> {
         return this.http.get<Reserva[]>(this.ApiUrl + 'reservas/');
     }
@@ -182,8 +182,8 @@ export class ApiService {
         let body = JSON.stringify(reserva);
         return this.http.post<Reserva>(this.ApiUrl + 'reservas/',body,this.httpOptions);
     }
-  // CONTRATO
-      public getContrato(): Observable<Contrato[]> {
+    // CONTRATO
+    public getContrato(): Observable<Contrato[]> {
         return this.http.get<Contrato[]>(this.ApiUrl + 'contratos/');
     }
 
@@ -201,8 +201,8 @@ export class ApiService {
         return this.http.post<Contrato>(this.ApiUrl + 'contratos/',body,this.httpOptions);
     }
 
-  // PAGOS
-      public getPagos(): Observable<Pago[]> {
+    // PAGOS
+    public getPagos(): Observable<Pago[]> {
         return this.http.get<Pago[]>(this.ApiUrl + 'pagos/');
     }
 
@@ -220,7 +220,7 @@ export class ApiService {
         return this.http.post<Pago>(this.ApiUrl + 'pagos/',body,this.httpOptions);
     }
 
-  // RECIBOS
+    // RECIBOS
     public getRecibos(): Observable<Recibo[]> {
         return this.http.get<Recibo[]>(this.ApiUrl + 'recibos/');
     }
@@ -247,5 +247,10 @@ export class ApiService {
     // CREAR RESERVA
     crearReserva(reserva: any) {
     return this.http.post('http://localhost:8000/api/reservas/', reserva);
+    }
+
+    // PUBLICAR FOTO
+    subirFoto(formData: FormData) {
+    return this.http.post('http://127.0.0.1:8000/api/fotos/', formData);
     }
 }

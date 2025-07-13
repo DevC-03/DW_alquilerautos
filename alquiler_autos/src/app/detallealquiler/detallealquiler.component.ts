@@ -20,6 +20,8 @@ export class DetallealquilerComponent {
   fechaFin: string = '';
   requiereChofer: boolean = false;
 
+  clienteId: number;
+
   constructor(private api: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(){
@@ -30,6 +32,7 @@ export class DetallealquilerComponent {
         this.obtenerFotos();
       });
     }
+    this.clienteId = Number(localStorage.getItem('user_id'));
   }
 
   obtenerFotos() {
@@ -57,7 +60,7 @@ export class DetallealquilerComponent {
     const precio_total = this.calcularPrecioTotal();
 
     const datosReserva = {
-      cliente: 1, // ⚠️ reemplazar por ID del cliente autenticado si lo tienes
+      cliente: this.clienteId, // ⚠️ reemplazar por ID del cliente autenticado si lo tienes
       vehiculo: this.vehiculo.id,
       fecha_inicio: this.fechaInicio,
       fecha_fin: this.fechaFin,
@@ -71,6 +74,7 @@ export class DetallealquilerComponent {
         alert("Reserva realizada con éxito");
       },
       error: err => {
+        console.log('Datos enviados:', datosReserva);
         console.error(err);
         alert("Error al hacer la reserva");
       }

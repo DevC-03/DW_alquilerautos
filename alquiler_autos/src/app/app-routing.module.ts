@@ -18,6 +18,9 @@ import { ShowalquilarComponent } from './showalquilar/showalquilar.component';
 import { DetallealquilerComponent } from './detallealquiler/detallealquiler.component';
 import { PaneladminComponent } from './paneladmin/paneladmin.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PublicarComponent } from './publicar/publicar.component';
+import { ReservasclienteComponent } from './reservascliente/reservascliente.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -37,7 +40,10 @@ const routes: Routes = [
   {path :"alquilar", component: ShowalquilarComponent},
   {path: "vehiculo/:id", component: DetallealquilerComponent},
   {path: "panel", component: PaneladminComponent},
-  {path: "registro", component: RegistroComponent}
+  {path: "registro", component: RegistroComponent},
+  {path: "publicar", component: PublicarComponent},
+  {path: "reservas", component:ReservasclienteComponent},
+  {path: "perfil", component:PerfilComponent}
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ export class Cliente {
   apellido: string;
   fecha_nacimiento: string;
   licencia_conducir: string;
+  direccion: string;
   telefono: string;
   reputacion: number;
 }

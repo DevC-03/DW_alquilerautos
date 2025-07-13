@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../service/api.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [ApiService],
 })
 export class HomeComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.auth.cargarUsuario(); // 🔥 Aquí forzamos que actualice username$
+  }
+
 }

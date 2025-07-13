@@ -22,7 +22,8 @@ export class LoginComponent {
     this.auth.login(this.username, this.password).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/panel']);
+        localStorage.setItem('user_id', res.user_id);
+        this.router.navigate(['/home']);
       },
       error: () => {
         this.error = 'Credenciales incorrectas';
