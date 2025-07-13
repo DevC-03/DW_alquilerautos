@@ -1,0 +1,143 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FF5A5F;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links li {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: #2B303A;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #FF5A5F;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #FF5A5F;
+    bottom: -5px;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #E04A4F;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #FF5A5F;
+    border: 2px solid #FF5A5F;
+}
+
+.btn-secondary:hover {
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+}
+
+/* Estilo personalizado solo para el botón de usuario */
+.user-toggle {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #FF5A5F;
+  border-radius: 30px;
+  color: #FF5A5F;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-toggle:hover {
+  background-color: #FF5A5F;
+  color: white;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  top: 110%;
+  right: 0;
+  min-width: 160px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding: 10px 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  white-space: nowrap;
+  color: #2B303A;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f2f2f2;
+}
+
+/* Mostrar menú al pasar mouse */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

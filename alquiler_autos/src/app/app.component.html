@@ -1,8 +1,31 @@
-<!-- <div>
-    <div class="card">
-        <p-menubar [model]="items" />
-    </div>
-    <div><router-outlet /></div>
-</div> -->
+<div class="container">
+  <nav>
+    <a routerLink="/" class="logo">RentCar</a>
+    <ul class="nav-links">
+
+      <li><a routerLink="/home">Inicio</a></li>
+      <li><a routerLink="/autos">Alquiler</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#servicios">Publica tu vehiculo</a></li>
+
+      <ng-container *ngIf="!auth.isAuthenticated(); else userMenu">
+        <li><a href="#" class="btn btn-secondary">Registrarse</a></li>
+        <li><a routerLink="/login" class="btn btn-primary">Iniciar Sesión</a></li>
+      </ng-container>
+
+      <ng-template #userMenu>
+        <li class="dropdown">
+          <a class="user-toggle">{{ auth.usuario?.username }} ▼</a>
+          <ul class="dropdown-menu">
+            <li><span>{{ auth.usuario?.tipo_usuario | titlecase }}</span></li>
+            <li><a href="/home" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ng-template>
+
+    </ul>
+  </nav>
+</div>
 
 <router-outlet />

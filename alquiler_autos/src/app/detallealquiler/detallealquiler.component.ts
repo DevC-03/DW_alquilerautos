@@ -9,7 +9,7 @@ import { FotoVehiculo } from '../../model/foto.model';
   standalone: false,
   templateUrl: './detallealquiler.component.html',
   styleUrl: './detallealquiler.component.css',
-  providers: [ApiService]
+  providers: [ApiService],
 })
 export class DetallealquilerComponent {
   vehiculo: Vehiculo | null = null;
