@@ -17,7 +17,7 @@
 
   <ng-template #body let-reserva>
     <tr>
-      <td>{{ reserva.vehiculo }}</td> <!-- Puedes reemplazar con placa si lo deseas -->
+      <td>{{ reserva.vehiculo_reserva }}</td>
       <td>{{ reserva.fecha_inicio | date: 'shortDate' }}</td>
       <td>{{ reserva.fecha_fin | date: 'shortDate' }}</td>
       <td>{{ reserva.precio_total | currency: 'USD' }}</td>
@@ -33,3 +33,31 @@
     </tr>
   </ng-template>
 </p-table>
+
+<div *ngIf="esPropietario">
+  <h3 class="mt-4">Reservas Pendientes por Confirmar</h3>
+
+  <p-table [value]="reservasPendientesPropietario" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Cliente</th>
+        <th>Vehículo</th>
+        <th>Fechas</th>
+        <th>Precio Total</th>
+        <th>Acción</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-reserva>
+      <tr>
+        <td>{{ reserva.cliente_reserva }}</td>
+        <td>{{ reserva.vehiculo_reserva }}</td>
+        <td>{{ reserva.fecha_inicio | date: 'shortDate' }} - {{ reserva.fecha_fin | date: 'shortDate' }}</td>
+        <td>{{ reserva.precio_total | currency: 'USD' }}</td>
+        <td>
+          <button pButton label="Confirmar" icon="pi pi-check" (click)="confirmarReserva(reserva.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

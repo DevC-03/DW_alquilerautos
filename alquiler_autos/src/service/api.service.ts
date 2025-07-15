@@ -253,4 +253,9 @@ export class ApiService {
     subirFoto(formData: FormData) {
     return this.http.post('http://127.0.0.1:8000/api/fotos/', formData);
     }
+
+    // CONFIRMAR RESERVA
+    actualizarReservaEstado(id: number, estado: string) {
+    return this.http.patch(`${this.ApiUrl}reservas/${id}/`, { estado: estado }, this.httpOptions);
+    }
 }

@@ -1,35 +1,47 @@
-<div *ngIf="!yaRegistrado; else registrado">
-  <!-- Aquí va el formulario de selección de perfil como cliente o propietario -->
-  <h2>Selecciona tu tipo de perfil</h2>
+<div class="login-bg d-flex justify-content-center align-items-center vh-100">
+  <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+    <div class="container">
+      <div class="card p-4">
 
-  <label>
-    <input type="radio" name="tipo" value="cliente" [(ngModel)]="tipoSeleccionado" />
-    Cliente
-  </label>
-  <label>
-    <input type="radio" name="tipo" value="propietario" [(ngModel)]="tipoSeleccionado" />
-    Propietario
-  </label>
+        <ng-container *ngIf="!yaRegistrado; else registrado">
+          <h2 class="text-center mb-3">Selecciona tu perfil</h2>
 
-  <form *ngIf="tipoSeleccionado === 'cliente'" (ngSubmit)="enviarPerfil()">
-    <!-- Campos cliente -->
-    <input [(ngModel)]="cliente.nombre" name="nombre" placeholder="Nombre" required />
-    <input [(ngModel)]="cliente.apellido" name="apellido" placeholder="Apellido" required />
-    <input [(ngModel)]="cliente.fecha_nacimiento" name="fecha" type="date" placeholder="Nacimiento" required />
-    <input [(ngModel)]="cliente.licencia_conducir" name="licencia" placeholder="Licencia" required />
-    <input [(ngModel)]="cliente.direccion" name="direccion" placeholder="Direccion" required />
-    <input [(ngModel)]="cliente.telefono" name="telefono" placeholder="Teléfono" required />
-    <button>Guardar Perfil</button>
-  </form>
+          <div class="d-flex justify-content-around mb-3">
+            <button type="button" class="btn btn-outline-primary" [class.active]="tipoSeleccionado === 'cliente'" (click)="tipoSeleccionado = 'cliente'">
+              Cliente
+            </button>
+            <button type="button" class="btn btn-outline-primary" [class.active]="tipoSeleccionado === 'propietario'" (click)="tipoSeleccionado = 'propietario'">
+              Propietario
+            </button>
+          </div>
 
-  <form *ngIf="tipoSeleccionado === 'propietario'" (ngSubmit)="enviarPerfil()">
-    <!-- Campos propietario -->
-    <input [(ngModel)]="propietario.telefono" name="telefono" placeholder="Teléfono" required />
-    <input [(ngModel)]="propietario.direccion" name="direccion" placeholder="Dirección" required />
-    <button>Guardar Perfil</button>
-  </form>
+          <form *ngIf="tipoSeleccionado === 'cliente'" (ngSubmit)="enviarPerfil()">
+            <input [(ngModel)]="cliente.nombre" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+            <input [(ngModel)]="cliente.apellido" name="apellido" class="form-control mb-2" placeholder="Apellido" required>
+            <input [(ngModel)]="cliente.fecha_nacimiento" name="fecha" type="date" class="form-control mb-2" required>
+            <input [(ngModel)]="cliente.licencia_conducir" name="licencia" class="form-control mb-2" placeholder="Licencia de conducir" required>
+            <input [(ngModel)]="cliente.direccion" name="direccion" class="form-control mb-2" placeholder="Dirección" required>
+            <input [(ngModel)]="cliente.telefono" name="telefono" class="form-control mb-3" placeholder="Teléfono" required>
+
+            <button class="btn-main w-100">Guardar Perfil</button>
+          </form>
+
+          <form *ngIf="tipoSeleccionado === 'propietario'" (ngSubmit)="enviarPerfil()">
+            <input [(ngModel)]="propietario.telefono" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
+            <input [(ngModel)]="propietario.direccion" name="direccion" class="form-control mb-3" placeholder="Dirección" required>
+
+            <button class="btn-main w-100">Guardar Perfil</button>
+          </form>
+
+        </ng-container>
+
+        <ng-template #registrado>
+          <div class="text-center">
+            <h3>✅ Ya tienes un perfil registrado.</h3>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
 </div>
-
-<ng-template #registrado>
-  <h3>✅ Ya tienes un perfil registrado.</h3>
-</ng-template>
