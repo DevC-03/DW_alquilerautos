@@ -22,6 +22,9 @@ export class DetallealquilerComponent {
 
   clienteId: number;
 
+  errorMensaje = '';
+  tipoMensaje: string = 'info';
+
   constructor(private api: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(){
@@ -53,30 +56,35 @@ export class DetallealquilerComponent {
 
   reservar() {
     if (!this.fechaInicio || !this.fechaFin || !this.vehiculo) {
-      alert("Completa todos los campos.");
+      this.errorMensaje = 'Completa todos los campos.';
+      this.tipoMensaje = 'warn';
       return;
     }
 
     const precio_total = this.calcularPrecioTotal();
 
     const datosReserva = {
-      cliente: this.clienteId, // ⚠️ reemplazar por ID del cliente autenticado si lo tienes
+      cliente: this.clienteId,
       vehiculo: this.vehiculo.id,
       fecha_inicio: this.fechaInicio,
       fecha_fin: this.fechaFin,
       requiere_chofer: this.requiereChofer,
-      seguro: false, // puedes agregar esto como otro checkbox si lo necesitas
+      seguro: true,
       precio_total: precio_total
     };
 
     this.api.crearReserva(datosReserva).subscribe({
       next: res => {
-        alert("Reserva realizada con éxito");
+        this.errorMensaje = 'Reserva realizada con éxito';
+        this.tipoMensaje = 'success';
+        // alert("Reserva realizada con éxito");
       },
       error: err => {
         console.log('Datos enviados:', datosReserva);
         console.error(err);
-        alert("Error al hacer la reserva");
+        this.errorMensaje = 'Error al hacer la reserva';
+        this.tipoMensaje = 'error';
+        // alert("Error al hacer la reserva");
       }
     });
   }

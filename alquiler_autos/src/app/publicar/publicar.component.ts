@@ -18,6 +18,9 @@ export class PublicarComponent {
   publicarvehiculo: Vehiculo = new Vehiculo();
   archivoImagen: File | null = null;
 
+  errorMensaje = '';
+  tipoMensaje: string = 'info';
+
   ngOnInit() {
   this.userId = Number(localStorage.getItem('user_id'));
 
@@ -50,7 +53,8 @@ export class PublicarComponent {
         formData.append('es_principal', 'true'); // o false si quieres
 
         this.api.subirFoto(formData).subscribe(res => {
-          alert("Vehículo e imagen publicados con éxito");
+          this.errorMensaje = 'Vehículo e imagen publicados con éxito';
+          this.tipoMensaje = 'success';
           this.obtenerVehiculos();
         }, err => {
           alert("Vehículo creado pero falló la imagen");

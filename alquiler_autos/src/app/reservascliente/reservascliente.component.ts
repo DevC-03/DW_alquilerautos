@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { Reserva } from '../../model/reserva';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-reservascliente',
@@ -11,7 +12,7 @@ import { Reserva } from '../../model/reserva';
 })
 export class ReservasclienteComponent {
 
-  constructor(private api:ApiService){}
+  constructor(private api: ApiService) {}
 
   listareservas: Reserva[] = [];
   reservasPendientesPropietario: Reserva[] = [];
@@ -51,6 +52,14 @@ export class ReservasclienteComponent {
           );
         });
       }
+    });
+  }
+
+  devolverReserva(reserva: Reserva) {
+    this.api.actualizarReservaEstado(reserva.id, 'COMPLETADA').subscribe(() => {
+      this.api.actualizarVehiculoEstado(reserva.vehiculo, 'DISPONIBLE').subscribe(() => {
+        this.obtenerReservas();
+      });
     });
   }
 

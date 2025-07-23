@@ -258,4 +258,8 @@ export class ApiService {
     actualizarReservaEstado(id: number, estado: string) {
     return this.http.patch(`${this.ApiUrl}reservas/${id}/`, { estado: estado }, this.httpOptions);
     }
+
+    actualizarVehiculoEstado(id: number, estado: string) {
+    return this.http.patch(`${this.ApiUrl}vehiculos/${id}/`, { estado: estado }, this.httpOptions);
+    }
 }

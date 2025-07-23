@@ -12,6 +12,7 @@
       <th>Fecha Fin</th>
       <th>Precio Total</th>
       <th>Estado</th>
+      <th>Acciones</th>
     </tr>
   </ng-template>
 
@@ -23,6 +24,16 @@
       <td>{{ reserva.precio_total | currency: 'USD' }}</td>
       <td>
         <p-tag [value]="reserva.estado" [severity]="getSeverity(reserva.estado)" />
+      </td>
+      <td>
+        <button 
+          *ngIf="reserva.estado === 'CONFIRMADA'" 
+          pButton 
+          label="Devolver" 
+          icon="pi pi-undo" 
+          class="p-button-success p-button-sm"
+          (click)="devolverReserva(reserva)">
+        </button>
       </td>
     </tr>
   </ng-template>

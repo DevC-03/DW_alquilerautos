@@ -1,3 +1,6 @@
+<div class="card flex flex-wrap gap-4 justify-center">
+    <p-message *ngIf="errorMensaje" [severity]="tipoMensaje" [text]="errorMensaje" closable></p-message>
+</div>
 <div class="container mt-4" *ngIf="esPropietario; else sinPermisos">
   <h2>Publicar vehículo</h2>
 

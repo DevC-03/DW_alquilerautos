@@ -29,6 +29,7 @@ import { MessageModule } from 'primeng/message';
 import { PasswordModule } from 'primeng/password';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
 
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../service/token.interceptor';
@@ -99,6 +100,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     CalendarModule,
     CheckboxModule,
     TagModule,
+    ToastModule,
   ],
   providers: [
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
